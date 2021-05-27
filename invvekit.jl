@@ -18,9 +18,9 @@ function invvekit(A, y, m, e)
     end
 end
 
-print("rr")
-A = [1 2; 3 4]
-y = [1; 2]
-m = 0
-e = 1
-print(invvekit(A,y,m,e))
+#print("rr")
+#A=[23 4 3; 5 4 5; -30 -10 -10]
+#y=[8; 3; 5]/norm([8; 3; 5])
+#m = 0
+#e = 1
+#print(invvekit(A,y,m,e))
