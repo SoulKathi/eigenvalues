@@ -5,19 +5,16 @@ using Plots
 function vekit(A, y, e)
     l=[0];
     while true
-        # do stuff
+        # Berechnung gemäß Algorithmus (Arbeitsblatt)
         y_h = A*y
         l_h = dot(y_h,y)
+        # neue Nährung Eigenwert zu Liste Nährungen Eigenwert hinzufügen
         l=[l;l_h]
         y=y_h/norm(y_h)
+        # Abbruchkriterium
         if (norm(A*y-l_h*y)<e)
+            # Liste Nährungen Eigenwert und Eigenvektor zurückgeben
             return l,y;
         end
     end
 end
-
-#print("rr")
-#A = [1 2; 3 4]
-#y = [1; 2]
-#e = 0.1
-#print(vekit(A,y,e))

@@ -4,26 +4,19 @@ using Plots
 
 function invvekit(A, y, m, e)
     l=[0];
+    # Berechnung gemäß Algorithmus (Arbeitsblatt)
     Q,R,p = lu(A-m*Diagonal(ones(size(A))))
-    #print(Q)
-    #print(R)
     while true
-        # do stuff
-        y_h=R\(Q' * y) #TODO: geht nicht immer
-        #print(y_h)
+        y_h=R\(Q' * y) #TODO: geht nicht immer, warum
         l_h = 1/(dot(y_h,y)) + m
+        # Närung Eigenwert zu Liste Eigenwert hinzufügen
         l=[l;l_h]
+        # neuen Wert Eigenvektor setzen
         y=y_h/norm(y_h)
-        #print(norm(A*y-l_h*y))
+        # Abbruchkriterium prüfen
         if (norm(A*y-l_h*y)<e)
+            # Liste Eigenwert und Eigenvektor zurückgeben
             return l,y;
         end
     end
 end
-
-#print("rr")
-#A=[23 4 3; 5 4 5; -30 -10 -10]
-#y=[8; 3; 5]/norm([8; 3; 5])
-#m = 0
-#e = 1
-#print(invvekit(A,y,m,e))
